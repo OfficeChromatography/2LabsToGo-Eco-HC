@@ -1,2 +1,3 @@
 # 2LabsToGo-HC
-2LabvsToGo Humidity Control
+
+The repository contains the files for upgrade 2LabsToGo to Humidity Control
