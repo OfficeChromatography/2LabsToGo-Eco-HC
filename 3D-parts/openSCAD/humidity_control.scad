@@ -65,11 +65,11 @@ module drawer() {
     a=(h-hf)/60; //arctan
     b=a*180/3.14;  //rad in °
     //1.5 mm slits
-    /*for(x=[3:3:42])
-    translate([2, hf-5, x]) rotate([0, 0, b]) cube([20, 6, 1.5]);  */
+    for(x=[3:3:42])
+    translate([2, hf-5, x]) rotate([0, 0, b]) cube([20, 6, 1.5]);
     //1 mm slits
-    for(x=[3:2:44])
-    translate([2, hf-5, x]) rotate([0, 0, b]) cube([20, 6, 1]); 
+    //for(x=[3:2:44])
+    //translate([2, hf-5, x]) rotate([0, 0, b]) cube([20, 6, 1]); 
     }
     translate([60-2.2, h-2.2, 0]) cube([2, 2, 46 ]);
 }
