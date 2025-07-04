@@ -1,9 +1,13 @@
 # 2LabsToGo-Eco-HC
 
-The repository contains the files for upgrade 2LabsToGo-Eco
+<u>Reference:</u> Schwack, W., Schmidt, J., Nimmerfroh, T. et al. Do-it-yourself, stand-alone, 
+open-source nebulizer for derivatizations and bioassays in planar chromatography. 
+JPC-J Planar Chromat (2025). https://doi.org/10.1007/s00764-025-00358-8
+
+The repository contains the files for upgrading 2LabsToGo-Eco
  (https://github.com/OfficeChromatography/2LabsToGo-Eco) for Humidity Control.
 
-## Installing the software updates
+## Downloading 2LabsToGo-Eco-HC
 On the Raspberry Pi, open a new terminal and change to the directory Downloads
 ```bash
 	cd ~/Downloads
@@ -12,31 +16,10 @@ Clone the 2LabsToG-Eco-HC repository from Github
 ```
 	sudo git clone https://github.com/OfficeChromatography/2LabsToGo-Eco-HC.git
 ````
-In the downloaded folder, there is a subfolder named Software_HC-update. 
-Copy this folder to the folder of the 2LabsToGo-Eco-Software
-```
-	sudo cp -R ~/Downloads/2LabsToGo-Eco-HC/Software_HC-update ~/2LabsToGo-Eco/2LabsToGo-Eco-Software
-````
-Change to the Software_HC-update directory
-````
-	cd ~/2LabsToGo-Eco/2LabsToGo-Eco-Software/Software_HC-update
-````
-Make the file 2LabsToGo-Eco-HC.sh executable
-````
-	sudo chmod +x 2LabsToGo-Eco-HC.sh
-```` 
-and execute the script with
-````
-	./2LabsToGo-Eco-HC.sh
-````
-The modified and new files are copied into the respective software folders. 
-Before, however, the old files are renamed with the extension “.old”, 
-so they can be recovered in case of problems. To find them, search for “*.old”.
-
 
 ## Updating the firmware
 The Marlin firmware and a built hex file are available in the folder Firmware-update.<br>
-Copy the firmware hex file (firmware_humidity_control.hex) to the folder 2LabsToGo-Eco-Firmware.
+Copy the firmware hex file (firmware_2LabsToGo-Eco.hex) to the folder 2LabsToGo-Eco-Firmware.
 ```
 	sudo cp -R ~/Downloads/2LabsToGo-Eco-HC/Firmware-update ~/2LabsToGo-Eco/2LabsToGo-Eco-Firmware
 ````
@@ -47,11 +30,9 @@ Change to the firmware folder
 Place the 2x4 jumper block onto the "ISP to PI" pins of the mainboard!<br> <br>
 Execute the avrdude command
 ```
-	sudo avrdude -p atmega2560 -C avrdude_gpio.conf -c 2LabsToGo -v -U flash:w:firmware_humidity_control.hex:i
+	sudo avrdude -p atmega2560 -C avrdude_gpio.conf -c 2LabsToGo -v -U flash:w:firmware_2LabsToGo-Eco.hex:i
 ````
 Remove the jumper block from the "ISP to Pi" pins.<br>
-For more information, consult the 2LabsToGo-Eco-Assembly Guide<br>
-(https://github.com/OfficeChromatography/2LabsToGo-Eco/blob/main/2LabsToGo-Eco-Instructions/2LabsToGo-Assembly%20guide.pdf).
 
 ## PID Tuning
 After flashing the new firmware, the PID tuning must be performed again:<br>

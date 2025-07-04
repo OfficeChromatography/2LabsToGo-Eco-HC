@@ -8,11 +8,7 @@ box();
 //lid();
 //drawer();
 //drawer_handle();
-
-//translate([10, 27, 41]) lid();
-//translate([16, 32, 3]) color("black", 0.5) {fan();}
-//color("yellow", 1.0) {rotate([90, 0, 90]) translate([73, 3, 14])  drawer(); }
-//color("yellow", 1.0) {rotate([180, 0, 0]) translate([-32, -133, -44]) drawer_handle();}
+//front_extension();
 
 module box() {
 difference() {
@@ -113,4 +109,28 @@ linear_extrude(height = 28, center = false, convexity = 10, twist = 360, $fn = 1
 translate([5, 0, 0])
 square([13, 1]);
 
+}
+
+module front_extension() {
+    difference() {
+    union() {
+        cube([215, 190, 5]);
+        cube([4, 190, 55]);
+        cube([215, 4, 55]); 
+        translate([215-4, 0, 0]) cube([4, 190, 55]);    
+        translate([0, 190-4, 4]) cube([215, 4, 55-4]);
+        translate([0, 190-15, 55-4]) cube([215, 15, 4]);
+        }
+    translate([15, 15, -1]) cube([215-2*15, 190-2*15, 7]);
+    //cutout magnets
+        translate([50, 190-6.5, 0]) cylinder(d1=9, d2=8.2, h=3.2);
+        translate([215-50, 190-6.5, 0]) cylinder(d1=9, d2=8.2, h=3.2);
+        translate([50, 190-6.5, 5-1.5]) cylinder(d=9, h=4);
+        translate([215-50, 190-6.5, 5-1.5]) cylinder(d=9, h=4);
+        
+        translate([6.5, 50, 0]) cylinder(d1=9, d2=8.2, h=3.2);
+        translate([215-6.5, 50, 0]) cylinder(d1=9, d2=8.2, h=3.2);
+        translate([6.5, 50, 5-1.5]) cylinder(d=8.2, h=4);
+        translate([215-6.5, 50, 5-1.5]) cylinder(d=8.2, h=4);
+    }
 }
